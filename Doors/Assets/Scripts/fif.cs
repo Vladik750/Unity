@@ -4,47 +4,37 @@ using UnityEngine;
 
 public class fif : MonoBehaviour
 {
-    
+
     private Rigidbody doorRb;
     private bool isOpened = false;
-    private int degrees = 90;
-    
+
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         doorRb = GetComponent<Rigidbody>();
-        
-       
+        anim = GetComponent<Animator>();
+        anim.SetTrigger("Idle");
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     private void OnMouseDown()
     {
-
-         if(!isOpened)
-         {
-             for (int i = 0; i <= degrees; i++)
-             {
-                 transform.Rotate(new Vector3(0, 1, 0), -1);
-
-             }
-             isOpened = true;
-         }
-         else
-         {
-             for (int i = degrees; i >= 0; i--)
-             {
-                 transform.Rotate(new Vector3(0, 1, 0), 1);
-
-             }
-             isOpened = false;
-         }
+        if (!isOpened)
+        {
+            anim.SetTrigger("openDoor");
+            isOpened = true;
+        }
+        else
+        {
+            anim.SetTrigger("closeDoor");
+        }
 
     }
 }
