@@ -34,6 +34,7 @@ public class fif : MonoBehaviour
         else
         {
             anim.SetTrigger("closeDoor");
+            isOpened = false;
         }
 
     }
